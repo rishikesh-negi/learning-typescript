@@ -1,9 +1,9 @@
 // Often, we want to give some parameters a default value. JS readily allows us to assign default values to parameters. In TS, the syntax is the same. Ex:
-function newCharacter(name: string, role: string = "warrior"): string {
+function newCharacter(name: string, role: string = "student"): string {
   return `${name} is a ${role}`;
 }
-// The parameters with a default value automatically become optional parameters because we don't have to pass an argument for them.
-// Additionally, we don't have to specify the type of the default parameters because TS can infer the type based on the specified default value. We need to specify the a union only if the parameter is expected to accept values of different types.
+// The parameters with a default value automatically become optional parameters because passing an argument for them is not necessary.
+// Additionally, we don't have to specify the type of the default parameters because TS can infer the type based on the specified default value. We need to specify a union type only if we're expecting the parameter to accept values of multiple types.
 // Ex: function someFn (x: string | number = "Hi"): string {...}
 
 console.log(newCharacter("Harry Potter"));
