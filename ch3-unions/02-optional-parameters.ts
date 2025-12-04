@@ -1,4 +1,4 @@
-// In JS, we don't need to pass arguments for all function parameters. To achieve the same behavior in TS, we use optional parameters to explicitly specify which parameters are optional. To make a parameters optional, we simply add a question mark to the end of the parameter name in the function definition:
+// JS allows for optional function parameters without any extra syntax. To create optional parameters in TS, we explicitly specify which function parameters are optional by adding a question mark to the end of the parameter's name in the function definition:
 function greet(name: string, title?: string): string {
   if (title) {
     return `Hello, ${title} ${name}`;
@@ -6,8 +6,8 @@ function greet(name: string, title?: string): string {
 
   return `Hello, ${name}`;
 }
-// All optional parameters will have a union as their type with the union comprising of the explicitly specified type and an implicitly added "undefined" type. In the above example, although "title" has been assigned a string type, it is actually a union: string | undefined.
-// All optional parameters should be declared after the required parameters in the parameters list because a required parameter cannot be written between two optional parameters since the arguments passed to the function will be mapped to the corresponding parameter variables in chronological order.
+// All optional parameters have a union as their type, with the union comprising of the type explicitly specified by us, and an implicitly added "undefined" type. In the above example, although "title" has been explicitly assigned a string type, it is actually typed to a union: string | undefined.
+// All optional parameters should be declared after the mandatory parameters in the parameters list because a mandatory parameter cannot be written between two optional parameters since the arguments passed to the function will be mapped to the corresponding parameter variables in a chronological order.
 
 export function calculateApiCost(numReqs: number, tier?: string) {
   if (tier === "pro") return numReqs * 0.05;
