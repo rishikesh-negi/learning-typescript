@@ -1,5 +1,5 @@
 // Template Literal Type
-// These are also not used often for writing application code/logic. They are useful for library authors. They allow us to use template literals to create derived literal types and even combine literal type to form consolidated literal types. Ex:
+// These are also not used often for writing application code/logic. They are useful for library authors. They allow us to use template literals to create derived literal value unions and even combine literal type to form consolidated literal types. Ex:
 type Class = "wizard" | "warrior" | "rogue";
 type Hero = `elf ${Class}`;
 
