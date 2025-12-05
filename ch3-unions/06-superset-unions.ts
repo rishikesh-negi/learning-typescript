@@ -8,4 +8,4 @@ function updateEmploymentStatus(status: EmploymentStatus) {
   return `Employment status updated: ${status}`;
 }
 
-// Superset unions can be used in a situation where we have a function which accepts some metadata that can have a few specific values and some other custom values as well.
+// Superset unions can be used in a situation where we have a function that accepts some metadata that can have a few specific values and some other custom values as well.
