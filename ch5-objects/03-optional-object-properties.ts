@@ -5,7 +5,7 @@ type Shinigami = {
   reiatsu: number;
   bankai?: string;
 };
-// This makes it so that the type of "bankai" is (string | undefined), just like optional parameters.
+// This makes it so that the type of the "bankai" property is (string | undefined), just like optional parameters.
 
 type Mail = {
   from: string;
