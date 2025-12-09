@@ -1,5 +1,5 @@
 // Empty Object Type:
-// We saw that an empty array defaulted to the "any" type, and in some cases, to the "never[]" type. However, empty objects work differently in TS. In JS, almost everything (except for null & undefined types) is implemented as an object under the hood.
+// We saw that an empty array defaulted to the "any[]" type, and in some cases, to the "never[]" type. However, empty objects work differently in TS. In JS, almost everything (except for null & undefined types) is implemented as an object under the hood.
 // For this reason, the type of a variable becomes "any" if we assign an empty object to it, because apart from null and undefined, all JS types are inherently objects BTS. Ex:
 let a = {};
 
