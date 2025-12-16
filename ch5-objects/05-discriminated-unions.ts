@@ -1,6 +1,6 @@
 // Discriminated Unions:
-// "Discrinant properties" are incredibly useful when we're dealing with a type union where one or more type options aren't primitive but complex types. These complex types are usually object types.
-// Usually, the object types in the union will have a common property (same name) with a different type/value in each of them (discriminant property / discriminating value). Ex:
+// "Discriminant properties" are incredibly useful when we're dealing with a type union where one or more type options aren't primitive but complex types. These complex types are usually object types.
+// Usually, the object types in the union will have a common property (same name) with a different type/value in each type (discriminant property / discriminating value). Ex:
 type MultipleChoiceQuestion = {
   kind: "multiple-choice";
   question: string;
@@ -46,11 +46,11 @@ function formatAddresses(addresses: Address[]) {
   let formatted = "";
   for (const address of addresses) {
     if (address.kind === "internal") {
-      formatted += `${address.firstName}.${address.lastName}@superai.io`;
+      formatted += `${address.firstName}.${address.lastName}@superai.io, `;
     }
 
     if (address.kind === "external") {
-      formatted += `${address.username}@${address.domain}`;
+      formatted += `${address.username}@${address.domain}, `;
     }
   }
 
