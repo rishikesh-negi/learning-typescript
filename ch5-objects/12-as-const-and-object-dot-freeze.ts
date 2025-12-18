@@ -17,9 +17,9 @@ const configConst = {
 // configConst.apiUrl = "https://api/tybw.com"; // Error: Cannot assign to 'apiUrl' because it is a read-only property.
 // configConst.admins.kyoraku = "baka"; // Error: Cannot assign to 'kyoraku' because it is a read-only property.
 
-// If the above configConst object was created in JS with the Object.freeze() method, the top level of the object would be immutable, and while we couldn't change the structure of "admins" and "features", we could still add to or remove elements from them, making the object only partially immutable
+// If the above configConst object was created in JS with the Object.freeze() method, the top level of the object would be immutable, and while we couldn't change the object-based value of "admins" and "features", we could still add to or remove elements from them, making the object only partially immutable
 
-// All TS features are stripped away and removed at runtime, but Object.freeze() prevents modifications to the top level of an object at runtime. It makes the object immutable but does not affect TS's type system:
+// All TS features are stripped away and removed at runtime, but Object.freeze() prevents modifications to the top level of an object even at runtime. It makes the object immutable but does not affect TS's type system:
 const frozenConfig = Object.freeze({
   apiUrl: "https://api.bleach.com",
   admins: {
@@ -32,4 +32,4 @@ const frozenConfig = Object.freeze({
 // frozenConfig.apiUrl = "https://api.tybw.com"; // Error: Cannot assign to 'apiUrl' because it is a read-only property.
 
 frozenConfig.features.push("age over 1000 years"); // This is fine because nested properties aren't frozen
-// Object.freeze() is a runtime operation but TS is smart enough to recognize that Object.freeze() is being called, so it gives us a compile-time error when object mutation is attempted. Object.freeze works fine for objects that have no nested properties by making them immutable at compile-time (because of TS) and runtime.
+// Object.freeze() is a runtime operation but TS is smart enough to recognize that Object.freeze() is being called, so it gives us a compile-time error when object mutation is attempted. Object.freeze works fine for objects that have no nested properties, by making them immutable at compile-time (because of TS) and runtime.
