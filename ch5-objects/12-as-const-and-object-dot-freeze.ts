@@ -33,3 +33,4 @@ const frozenConfig = Object.freeze({
 
 frozenConfig.features.push("age over 1000 years"); // This is fine because nested properties aren't frozen
 // Object.freeze() is a runtime operation but TS is smart enough to recognize that Object.freeze() is being called, so it gives us a compile-time error when object mutation is attempted. Object.freeze works fine for objects that have no nested properties, by making them immutable at compile-time (because of TS) and runtime.
+// Using the "as const" assertion is enough to avoid accidental object mutations, but, if for some reason, we need the object to be immutable at runtime, we can combine the "as const" assertion with Object.freeze()
