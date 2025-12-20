@@ -1,5 +1,5 @@
 // Satisfies:
-// It's a relatively new TS feature that can be used with object types as well as the "as const" objects. It is used to specify that a value should satisfy an explicitly defined type without the type being actually assigned to the value, or without changing the originally inferred type of the value. Ex:
+// It's a relatively new TS feature that can be used with object types as well as the "as const" objects. It is used to ensure that a value satisfies an explicitly defined type without changing its original/inferred type and behavior. Ex:
 type A = { name: string };
 
 // This feature solves a common pain point of TS's type system. Before "satisfies", we had to choose between:
@@ -14,7 +14,7 @@ const colors = {
   // Property with typo:
   yelow: "#ffff00",
 };
-// Here, type inference misses the typo and doesn't raise an error. So, we would create an explicit type that catches such errors:
+// Here, type inference misses the "yelow" typo and doesn't raise an error. So, we would create an explicit type that catches such errors:
 type ColorMap = {
   red: string;
   green: string;
@@ -27,12 +27,12 @@ const colorsTypes: ColorMap = {
   green: "#00ff00",
   blue: "#0000ff",
 
-  // Typo raises a TS error:
+  // Typo raises a TS compile-time error:
   // yelow: "#ffff00",
 
   yellow: "#ffff00",
 };
-// The problem is that literal types are lost because ColorMap values are of "string" type. Ex:
+// But the problem is that literal types are lost because ColorMap values are of "string" type. Ex:
 const RedHex = typeof colorsTypes.red;
 // Here, RedHex should be the literal "#ff0000" value, but is any "string" instead.
 
