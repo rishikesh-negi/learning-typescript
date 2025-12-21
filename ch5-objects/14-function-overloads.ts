@@ -1,12 +1,11 @@
 // Function Overloads:
 // It's a feature that's present in many languages. It allows us to define multiple different definitions for the same function, with different parameters that can be passed to it. JS is very lenient when it comes to function signatures, and TS gives us a way to take advantage of that flexibility while still maintaining type safety.
-// First, we define a function that can be called in a multiple ways:
 type Employee = {
   name: string;
   department: string;
 };
 
-// Function Overloads to prevent invalid combination of parameters in calls to the formatEmployee function:
+// Function Overloads to prevent invalid parameter combinations in formatEmployee function calls:
 function formatEmployeeMessage(employee: Employee): string;
 function formatEmployeeMessage(
   employee: Employee,
@@ -14,6 +13,7 @@ function formatEmployeeMessage(
   onboardedDate: Date
 ): string;
 
+// First, we define a function that can be called in multiple ways:
 function formatEmployeeMessage(
   employee: Employee,
   isNew?: boolean,
@@ -24,14 +24,14 @@ function formatEmployeeMessage(
   return `Employee: ${employee.name}, New: Yes, Onboarded: ${onboradedDate}`;
 }
 
-// Used as-is, the above function can be called in three different ways:
-// formatEmployeeMessage(employee);
-// formatEmployeeMessage(employee, boolean); // This combination is not valid
-// formatEmployeeMessage(employee, boolean, Date);
+// If used without function overloads, the above function can be called in three different ways:
+// formatEmployeeMessage(employee); // valid
+// formatEmployeeMessage(employee, boolean); // Invalid parameter combination
+// formatEmployeeMessage(employee, boolean, Date); // valid
 
-// However, we can constrain the function to allow only certain combinations of parameters by using function overloads (they are and need to be declared just above the function definition), thus eliminating invalid or wrong combinations of parameters:
+// However, we can constrain the function to allow only certain combinations of parameters by using function overloads (they need to be declared just above the function definition), thus eliminating invalid or wrong combinations of parameters:
 const employee1: Employee = { name: "Rishi", department: "CS" };
-// const message = formatEmployeeMessage(employee, true); // Raises TS error: No overload expects 2 arguments, but overloads do exist that expect either 1 or 3 arguments
+// const message = formatEmployeeMessage(employee1, true); // TS error: No overload expects 2 arguments, but overloads do exist that expect either 1 or 3 arguments
 const message1 = formatEmployeeMessage(employee1);
 console.log(message1);
 
@@ -39,7 +39,7 @@ const employee2: Employee = { name: "Jay", department: "Finance" };
 const message2 = formatEmployeeMessage(employee2, true, new Date());
 console.log(message2);
 
-// This feature is used commonly for building libraries, but not in development because it adds a lot of complexity and overhead to our code. In development, if the need for a function overload arises, it means that we're writing a complicated function that can be simplified. That said, we do occasionally encounter situations, even in development, where we need to use function overloads.
+// This feature is used commonly for building libraries, but not in development because it adds a lot of complexity and overhead to our code. In development, if the need for a function overload arises, it means that we're writing a very complicated function that can be simplified. That said, we do occasionally encounter situations, even in development, where we need to use function overloads.
 
 type MailPreferences = {
   [key: PropertyKey]: boolean | string;
@@ -86,4 +86,19 @@ function configurePreferences(
     doNotDisturb,
     outOfOffice,
   };
+}
+
+// Function overload adds fragility to our code. Assume that a function funcX has 2 overloads, one of which returns a number and the other one, a string. So, the return type of funcX will be (number | string). While implementing the function, we might accidentally return a number for the overload that should return a string, and a string for the other overload that should return a number. TS is not smart enough to detect this mistake. It lets us do that as long as funcX is returning either a string or a number. Ex:
+
+function funcX(a: string, b: string): string;
+function funcX(a: number, b: number): number;
+
+function funcX(a: string | number, b: string | number) {
+  if (typeof a === "string") {
+    return Number.parseInt(a + b); // Returning a number instead of a string by mistake
+  }
+
+  if (typeof a === "number") {
+    return `${a}${b}`; // Returning a string instead of a number by mistake
+  }
 }
