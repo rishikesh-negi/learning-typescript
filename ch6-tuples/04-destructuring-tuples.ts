@@ -1,5 +1,5 @@
 // Destructuring Tuples:
-// We've already discussed this in the tuples-vs-objects lesson. Tuples can be used to return multiple values from a function without having to create an object type just for doing so. A tuple, along with destructuring, is a handy way to return "positional" data:
+// We've already discussed this in the previous tuples-vs-objects lesson. Tuples can be used to return multiple values from a function without having to create an object type just for that purpose. A tuple, along with destructuring, is a handy way to return "positional" data:
 function getName(fullName: string): [string, string] {
   const parts = fullName.split(" ");
   return [parts[0] || "Hello", parts[1] || "World"];
