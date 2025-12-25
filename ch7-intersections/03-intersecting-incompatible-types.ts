@@ -51,7 +51,7 @@ type ChannelType = {
 
 type ReviewMethod = "manual_review" | "auto_process";
 
-// type TicketMetadata = SentimentTag & ChannelType;
+// type TicketMetadata = SentimentTag & ChannelType; // Becomes "never" due to property conflict
 type TicketMetadata = {
   sentiment: SentimentTag;
   channel: ChannelType;
