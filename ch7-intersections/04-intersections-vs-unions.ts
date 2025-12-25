@@ -9,7 +9,7 @@
 // Intersections:
 // 1. Use the & operator (similar to the logical AND)
 // 2. Narrow the resulting type (fewer possible values)
-// 3. Useful for combining multiple conrtaints or adding more required/mandatory properties to existing types
+// 3. Useful for combining multiple constraints or adding more required/mandatory properties to existing types
 
 // Example:
 type Human = {

@@ -34,7 +34,7 @@ interface Spaceship {
 // 99% of the time, this behavior is not what we want. It can compromise type safety and introduce bugs that TS is supposed to eliminate at compile time, in the first place.
 
 // There are two situations where using 'interface' instead of 'type' is ideal:
-// ----- 1. When the declaration merging in intentional and deliberate. This happens when we need to augment a global base type. For instance, let's say we want to augment the global 'Window' object/namespace by adding some useful properties to it in out scripts:
+// ----- 1. When the declaration merging is intentional and deliberate. This happens when we need to augment a global base type. For instance, let's say we want to augment the global 'Window' object/namespace by adding some useful properties to it in out scripts:
 declare global {
   interface Window {
     google: Google;
@@ -63,7 +63,7 @@ interface Shinigami extends Character {
   kidoLevel: number;
   transformations: ["base", "shikai"?, "bankai"?];
 }
-// Type intersection and interface merging both work just fine, but TS wiki recommends using interface extends over type intersections, because interfaces create a single flat object type that detects property conflicts, which are usually important to resolve. Intersections simply recursively merge proeprties, and produce 'never' type for conflicting ones, just as we've learned. So, interface merging is bit safer and compiles faster, which helps keep tooling performance snappy. There are more reasons why interfaces are preferred for merging, which can be read here:
+// Type intersection and interface merging both work just fine, but TS wiki recommends using interface extends over type intersections, because interfaces create a single flat object type that detects property conflicts, which are usually important to resolve. Intersections simply recursively merge properties, and produce 'never' type for conflicting ones, just as we've learned. So, interface merging is a bit safer and compiles faster, which helps keep tooling performance snappy. There are more reasons why interfaces are preferred for merging, which can be read here:
 // https://github.com/microsoft/TypeScript/wiki/Performance#preferring-interfaces-over-intersections
 
 // So, apart from the above two cases discussed, we should always prefer 'type' over 'interface'.
