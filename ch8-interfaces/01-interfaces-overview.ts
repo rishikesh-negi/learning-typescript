@@ -67,3 +67,19 @@ interface Shinigami extends Character {
 // https://github.com/microsoft/TypeScript/wiki/Performance#preferring-interfaces-over-intersections
 
 // So, apart from the above two cases discussed, we should always prefer 'type' over 'interface'.
+
+interface UserFeedback {
+  rating: number;
+  comment: string;
+}
+
+interface SupportSession {
+  id: string;
+  startedAt: number;
+  endedAt: number;
+  feedback: UserFeedback;
+}
+
+function getSessionDuration(session: SupportSession): number {
+  return (session.endedAt - session.startedAt) / 1000;
+}
