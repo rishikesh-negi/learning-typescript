@@ -47,7 +47,7 @@ interface Google {
   };
 }
 
-window.google; // TS now sees this as type Google
+window.google; // TS now sees this property as type Google
 // This technique is actually used by developers to allow users to sign in with Google on their platform
 // The 'type' keyword cannot be used to augment the built-in "Window" type with it, but we can merge types into it using 'interface'
 // -----
@@ -57,6 +57,8 @@ interface Character {
   name: string;
   reiatsu: number;
 }
+
+// For example, if we're authoring a library that we intend to make available to all developers and also extensible, to allow developers to augment the features or tools, interfaces are the ideal chioce.
 
 interface Shinigami extends Character {
   zanpakutou?: string;
