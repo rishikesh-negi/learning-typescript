@@ -1,6 +1,6 @@
 // Record Utility Type:
 // We briefly discussed and used this in an earlier lesson about defining objects with dynamic keys.
-// Partial<T>, Required<T>, and Readonly<T> are useful for changing the characteristics of properties in a type, but Record<K, T> is one of the utility types that change the shape of the type, altogether. It creates a type with a set of 'K' properties having a type 'T':
+// Partial<T>, Required<T>, and Readonly<T> are useful for changing the characteristics of properties in a type, but Record<K, T> is one of the utility types that change the shape of the type, altogether. It creates a type with a set of "K-type" properties/keys having a type 'T' value:
 // Using string as the key type:
 type StringKeyDictionary = Record<string, number>;
 
