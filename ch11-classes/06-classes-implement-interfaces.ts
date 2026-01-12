@@ -17,7 +17,7 @@ interface Drivable {
 //   model: string;
 // } // Error: Class 'ElectricCar' incorrectly implements interface 'Drivable'. Property 'drive' is missing in type 'ElectricCar' but required in type 'Drivable'.
 
-// So, we're reminded bt TS to add the "drive" method to ElectricCar, and we can do so:
+// So, we're reminded by TS to add the "drive" method to ElectricCar, and we can do so:
 class ElectricCar implements Vehicle, Drivable {
   make: string;
   model: string;
@@ -35,7 +35,7 @@ class ElectricCar implements Vehicle, Drivable {
   }
 }
 
-// IMPORTANT NOTE: Classes can implement not just interfaces but also types. In the above example, we could have made Vehicle a type instead of an interface, and it would've worked just fine.
+// IMPORTANT NOTE: Classes can implement not just interfaces but also type aliases. In the above example, we could have made Vehicle a type alias instead of an interface, and it would've worked just fine.
 
 type User = {
   firstName: string;
